@@ -9,16 +9,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
-    @RequestMapping(value = "/")
-    @ResponseBody
-    public String welcome() {
-        return "index";
-    }
 
-    @GetMapping("hello") //http://localhost:8080/hello
+    @GetMapping("index") //http://localhost:8080/hello
     public String hello(Model model){
         model.addAttribute("data","hello");
 
-        return "hello";
+        return "index";
     }
 }
