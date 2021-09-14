@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
-    @GetMapping("index") //http://localhost:8080/hello
-    public String hello(Model model){
+    @GetMapping("/") //http://localhost:8080/hello
+    public String mainHome(Model model){
         model.addAttribute("data","hello");
-
         return "index";
     }
 }
