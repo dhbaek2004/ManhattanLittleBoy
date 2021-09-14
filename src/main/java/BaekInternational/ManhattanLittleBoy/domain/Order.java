@@ -26,7 +26,9 @@ public class Order {
     private User user;
 
     // OrderItem과의 Relation
+    /*
     @OneToMany(mappedBy = "OrderItem", cascade = CascadeType.MERGE)
     private List<OrderItem> orderItems = new ArrayList<>();
+    */
 
 }
