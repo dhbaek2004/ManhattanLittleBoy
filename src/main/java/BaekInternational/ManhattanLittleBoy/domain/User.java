@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
@@ -29,4 +31,7 @@ public class User {
     private LocalDateTime u_registDate;
     private String u_status;
     private LocalDateTime u_lastLogin;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders = new ArrayList<>();
 }
