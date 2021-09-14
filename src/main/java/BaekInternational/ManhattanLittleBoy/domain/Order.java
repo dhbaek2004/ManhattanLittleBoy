@@ -4,25 +4,29 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
 public class Order {
-    @Id @GeneratedValue
-    @Column(name = "o_seq")
-    private int o_seq;
-    private LocalDate o_date;
+    @Id
+    @GeneratedValue
+    @Column(name = "orderSeq")
+    private int orderSeq;
+    private LocalDateTime orderDate;
+    private OrderPayment orderPayment;
+    private int orderPrice;
+    private String orderAddress;
 
-    // o_charge 추가 요망
-    private int o_price;
-    private String o_address;
 
+    // User 와의 Relation
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "u_seq")
+    @JoinColumn(name = "userSeq")
     private User user;
 
-    // 이 아래에 주문상품과의 연관 관계 정의 구현 요망
+    // OrderItem과의 Relation
+    @OneToMany(mappedBy = "OrderItem", cascade = CascadeType.MERGE)
+    private List<OrderItem> orderItems = new ArrayList<>();
 
 }
