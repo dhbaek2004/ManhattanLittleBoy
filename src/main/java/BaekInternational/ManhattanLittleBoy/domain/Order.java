@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,10 +27,9 @@ public class Order {
     @JoinColumn(name = "userSeq")
     private User user;
 
-    // OrderItem과의 Relation
-    /*
-    @OneToMany(mappedBy = "OrderItem", cascade = CascadeType.MERGE)
-    private List<OrderItem> orderItems = new ArrayList<>();
-    */
+    // OrderItem과의 Relation 오더아이템이 오더의 자식
+    @OneToMany(mappedBy = "User", cascade = CascadeType.MERGE)
+    private List<User> userList = new ArrayList<>();
+
 
 }
