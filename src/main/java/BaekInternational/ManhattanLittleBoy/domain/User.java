@@ -14,7 +14,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    @Column(name= "userSeq")
+    @Column(name= "u_seq")
     private int userSeq;
     private String userId;
     private String userPw;
@@ -31,9 +31,9 @@ public class User {
     private String userStatus;
     private LocalDateTime userLastLogin;
 
-    @OneToMany(mappedBy = "Order")
+    @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
 
-    @OneToOne(mappedBy = "Basket")
-    private Basket basket = new Basket();
+    @OneToOne(fetch = FetchType.LAZY)
+    private Basket basket;
 }
