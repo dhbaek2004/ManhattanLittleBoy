@@ -19,11 +19,11 @@ public class OrderItem {
     private int orderItemQuantity;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "o_seq")
+//    @JoinColumn(name = "o_seq")
     private Order order;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "i_seq")
+//    @JoinColumn(name = "i_seq")
     private Item item;
 
 }

@@ -3,10 +3,7 @@ package BaekInternational.ManhattanLittleBoy.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -22,6 +19,8 @@ public class ReviewComment {
     private LocalDateTime reviewCommentRegisterTime;
     private LocalDateTime reviewCommentModifyTime;
 
-    private User user;
+    private int userSeq;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private Review review;
 }
