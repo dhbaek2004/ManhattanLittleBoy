@@ -23,4 +23,10 @@ public class Item {
     @OneToMany(mappedBy = "item", cascade = CascadeType.MERGE)
     private List<ItemDetail> itemDetail = new ArrayList<>();
 
+    @OneToMany(mappedBy = "item")
+    private List<Question> questions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "item")
+    private List<Question> reviews = new ArrayList<>();
+
 }

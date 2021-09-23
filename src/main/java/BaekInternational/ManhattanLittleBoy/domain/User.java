@@ -34,6 +34,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user") //OneToOne에선 JoinColumn을 꼭 쓰기.
+    //@JoinColumn(name = "b_seq")
     private Basket basket;
 }

@@ -18,6 +18,7 @@ public class Basket {
     private int basketSeq;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "u_seq")
     private User user;
 
     @OneToMany(mappedBy = "basket", cascade = CascadeType.MERGE)

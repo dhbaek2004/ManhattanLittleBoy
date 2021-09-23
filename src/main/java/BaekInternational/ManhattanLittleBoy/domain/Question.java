@@ -3,11 +3,9 @@ package BaekInternational.ManhattanLittleBoy.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -23,9 +21,12 @@ public class Question {
     private String questionContent;
     private LocalDateTime questionRegisterTime;
     private LocalDateTime questionModifyTime;
+    private int userSeq;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     private Item item;
-    private User user;
-    private List<QuestionComment> questionComments;
+
+    @OneToMany(mappedBy = "question")
+    private List<QuestionComment> questionComments = new ArrayList<>();
 
 }

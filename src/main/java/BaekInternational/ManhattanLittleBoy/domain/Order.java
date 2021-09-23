@@ -13,7 +13,7 @@ import static javax.persistence.FetchType.LAZY;
 @Getter
 @Setter
 @Entity
-@Table(name="orders")
+@Table(name="order")
 public class Order {
     @Id
     @GeneratedValue
@@ -27,7 +27,7 @@ public class Order {
 
     // User 와의 Relation
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "u_seq")
+//    @JoinColumn(name = "u_seq")
     private User user;
 
     // OrderItem 과의 Relation
@@ -35,7 +35,7 @@ public class Order {
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "d_seq")
+//    @JoinColumn(name = "d_seq")
     private Delivery delivery;
 
 }
