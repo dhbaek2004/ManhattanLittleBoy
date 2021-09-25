@@ -12,14 +12,13 @@ import java.util.List;
 @Setter
 @Entity
 public class Basket {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "b_seq")
     private int basketSeq;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "u_seq")
-    private User user;
+    @JoinColumn(name = "m_seq")
+    private Member member;
 
     @OneToMany(mappedBy = "basket", cascade = CascadeType.MERGE)
     private List<BasketItem> basketItems = new ArrayList<>();

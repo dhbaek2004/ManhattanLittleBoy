@@ -9,19 +9,18 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class BasketItem {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bi_seq")
     private int basketItemSeq;
-
     private int basketItemQuantity;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "i_seq")
+    @JoinColumn(name = "i_seq")
     private Item item;
 
     @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "b_seq")
+    @JoinColumn(name = "b_seq")
     private Basket basket;
 
 

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class ReviewComment {
     @Id
     @GeneratedValue
-    @Column(name = "rc_seq")
+    // @Column(name = "rc_seq")
     private int reviewCommentSeq;
 
     private String reviewCommentContent;
