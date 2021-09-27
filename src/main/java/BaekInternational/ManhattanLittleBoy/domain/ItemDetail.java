@@ -11,12 +11,13 @@ import javax.persistence.*;
 public class ItemDetail {
     @Id
     @GeneratedValue
-    @Column(name = "id_seq")
-    private int itemDetailSeq;
+    //@Column(name = "id_sequence")
+    private int itemDetailSequence;
 
     private String itemDetailOption;
     private int itemDetailOptionPrice;
     private int itemDetailOptionQuantity;
+    private String itemDetailImage;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private Item item;
