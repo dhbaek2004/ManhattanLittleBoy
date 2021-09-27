@@ -27,15 +27,15 @@ public class Order {
 
     // User 와의 Relation
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "m_seq")
-    private Member member;
+    @JoinColumn(name = "u_seq")
+    private User user;
 
     // OrderItem 과의 Relation
     @OneToMany(mappedBy = "order", cascade = CascadeType.MERGE)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "d_seq")
+    @JoinColumn(name = "d_seq")
     private Delivery delivery;
 
 }
