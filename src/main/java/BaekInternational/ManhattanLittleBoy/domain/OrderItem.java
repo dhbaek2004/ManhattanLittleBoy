@@ -14,16 +14,16 @@ import static javax.persistence.FetchType.LAZY;
 public class OrderItem {
     @Id
     @GeneratedValue
-    @Column(name = "oi_seq")
-    private int orderItemSeq;
+//    @Column(name = "oi_sequence")
+    private int orderItemSequence;
     private int orderItemQuantity;
 
     @ManyToOne(fetch = LAZY)
-//    @JoinColumn(name = "o_seq")
+    @JoinColumn
     private Order order;
 
     @ManyToOne(fetch = LAZY)
-//    @JoinColumn(name = "i_seq")
+    @JoinColumn
     private Item item;
 
 }

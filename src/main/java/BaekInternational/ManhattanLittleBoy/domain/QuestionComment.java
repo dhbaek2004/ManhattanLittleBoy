@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 public class QuestionComment {
     @Id
     @GeneratedValue
-    @Column(name = "qc_seq")
-    private int questionCommentSeq;
+    //@Column(name = "qc_sequence")
+    private int questionCommentSequence;
 
     private String questionCommentContent;
     private LocalDateTime questionCommentRegisterTime;
     private LocalDateTime questionCommentModifyTime;
 
-    private int userSeq;
+    private int memberSequence;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Question question;

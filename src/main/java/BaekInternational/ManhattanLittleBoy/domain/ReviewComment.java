@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 public class ReviewComment {
     @Id
     @GeneratedValue
-    // @Column(name = "rc_seq")
-    private int reviewCommentSeq;
+    // @Column(name = "rc_Sequence")
+    private int reviewCommentSequence;
 
     private String reviewCommentContent;
     private LocalDateTime reviewCommentRegisterTime;
     private LocalDateTime reviewCommentModifyTime;
 
-    private int userSeq;
+    private int memberSequence;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Review review;

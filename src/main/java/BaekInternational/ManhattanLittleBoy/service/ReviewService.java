@@ -1,4 +1,4 @@
 package BaekInternational.ManhattanLittleBoy.service;
 
-public class LoginService {
+public class ReviewService {
 }

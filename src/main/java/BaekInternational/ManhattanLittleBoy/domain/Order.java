@@ -13,21 +13,22 @@ import static javax.persistence.FetchType.LAZY;
 @Getter
 @Setter
 @Entity
-@Table(name="orders")
+@Table(name="orders") //order는 postgresql의 예약어 이므로 table 명을 orders로 매칭
 public class Order {
     @Id
     @GeneratedValue
-    @Column(name = "o_seq")
-    private int orderSeq;
+    //@Column(name = "o_sequence")
+    private int orderSequence;
 
     private LocalDateTime orderDate;
+    @Enumerated(EnumType.STRING)
     private OrderPayment orderPayment;
     private int orderPrice;
     private String orderAddress;
 
-    // User 와의 Relation
+    // member 와의 Relation
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "m_seq")
+    @JoinColumn
     private Member member;
 
     // OrderItem 과의 Relation
@@ -35,7 +36,7 @@ public class Order {
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "d_seq")
+    @JoinColumn
     private Delivery delivery;
 
 }

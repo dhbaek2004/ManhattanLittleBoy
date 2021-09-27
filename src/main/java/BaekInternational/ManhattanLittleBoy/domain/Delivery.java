@@ -13,17 +13,17 @@ import java.time.LocalDateTime;
 public class Delivery {
     @Id
     @GeneratedValue
-    @Column(name = "d_seq")
-    private int deliverySeq;
+    //@Column(name = "d_sequence")
+    private int deliverySequence;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus;
 
     private LocalDateTime deliveryExpDate;
     private LocalDateTime deliveryArrDate;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "o_seq")
+    @JoinColumn
     private Order order;
 
 }

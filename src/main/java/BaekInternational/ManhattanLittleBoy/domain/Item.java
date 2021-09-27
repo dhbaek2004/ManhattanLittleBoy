@@ -11,11 +11,12 @@ import java.util.List;
 @Setter
 @Entity
 public class Item {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "i_seq")
-    private int itemSeq;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "i_sequence")
+    private int itemSequence;
     private String itemName;
-    private int itemRating;
+    private int itemScore;
     private int itemPrice;
     private String itemContents;
 
