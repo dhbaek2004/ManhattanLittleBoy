@@ -15,14 +15,15 @@ import java.util.List;
 public class Review {
     @Id
     @GeneratedValue
-    @Column(name = "r_seq")
-    private int reviewSeq;
+    //@Column(name = "r_sequence")
+    private int reviewSequence;
 
     private String reviewTitle;
     private String reviewContent;
     private LocalDateTime reviewRegisterTime;
     private LocalDateTime reviewModifyTime;
-    private int userSeq;
+    private int reviewScore;
+    private int memberSequence;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Item item;
