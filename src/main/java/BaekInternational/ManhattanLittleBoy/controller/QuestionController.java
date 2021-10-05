@@ -30,8 +30,9 @@ public class QuestionController {
     public String postQuetions(QuestionForm form) {
         Question question = new Question();
         question.setQuestionTitle(form.getTitle());
+        // TODO 세션, 글내용 가져오기
         questionService.createQuestion(question);
-        log.info("form 에서 넘어온 값" + form.getTitle());
+        log.info("form 에서 넘어온 값 : " + form.getTitle());
         return "redirect:/";
 
     }
