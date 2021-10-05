@@ -1,20 +1,17 @@
 package BaekInternational.ManhattanLittleBoy.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@Entity
 public class Question {
-    @Id
-    @GeneratedValue
-    //@Column(name = "q_sequence")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int questionSequence;
 
     private String questionTitle;
