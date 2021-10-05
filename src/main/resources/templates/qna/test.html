@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<body>
+
+<div class="container">
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>#</th>
+                <th>#</th>
+                <th>#</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="question : ${question}">
+                <td th:text="${question.questionSequence}"></td>
+                <td th:text="${question.questionTitle}"></td>
+                <td th:text="${question.questionContent}"></td>
+                <td th:text="${question.questionRegisterTime}"></td>
+
+                <!-- 상품 정보 수정 버튼, 버튼 클릭할 시 item/{id}/edit 요청을 보내고, 파라미터로 id를 넘김 -->
+<!--                <td>-->
+<!--                    <a href="#" th:href="@{/question/{id}/edit (id=${item.id})}" class="btn btn-primary" role="button">수정</a>-->
+<!--                </td>-->
+                <!-- 상품 정보 수정 버튼 -->
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div> <!-- /container -->
+
+</body>
+</html>

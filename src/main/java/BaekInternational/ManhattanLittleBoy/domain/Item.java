@@ -29,4 +29,15 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<Question> reviews = new ArrayList<>();
 
+    // == 연관관계 메서드 == //
+    // Item - ItemDetail 간의 연관관계 메서드
+    public void setItemDetail(ItemDetail itemDetail) {
+        this.setItemDetail(itemDetail);
+        itemDetail.setItem(this);
+    }
+
+    // 비즈니스 로직
+    public void addStock(int quantity) {
+    }
+
 }

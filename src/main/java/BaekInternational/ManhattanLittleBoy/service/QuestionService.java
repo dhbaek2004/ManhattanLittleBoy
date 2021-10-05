@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -15,5 +17,9 @@ public class QuestionService {
     public int createQuestion(Question question) {
         questionRepository.save(question);
         return question.getQuestionSequence();
+    }
+
+    public List<Question> findQuestions() {
+        return questionRepository.findAll();
     }
 }
