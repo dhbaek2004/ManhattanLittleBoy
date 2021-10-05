@@ -25,7 +25,7 @@ public class QuestionController {
         return "qna/createform";
     }
 
-    // 질문 등록하기
+    // create Question
     @PostMapping("/post")
     public String postQuetions(QuestionForm form) {
         Question question = new Question();
