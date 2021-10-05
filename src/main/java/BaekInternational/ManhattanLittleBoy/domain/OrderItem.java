@@ -17,6 +17,7 @@ public class OrderItem {
 //    @Column(name = "oi_sequence")
     private int orderItemSequence;
     private int orderItemQuantity;
+    private int orderItemPrice;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn
@@ -25,5 +26,24 @@ public class OrderItem {
     @ManyToOne(fetch = LAZY)
     @JoinColumn
     private Item item;
+
+    // == 생성 메서드 == //
+
+    /**
+     * OrderItem 생성 메서드
+     * @param item
+     * @param price
+     * @param quantity
+     * @return
+     */
+    public static OrderItem createOrderItem(Item item, int price, int quantity) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderItemPrice(price);
+        orderItem.setOrderItemQuantity(quantity);
+
+        return orderItem;
+    }
+
 
 }
