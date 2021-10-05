@@ -15,6 +15,7 @@ public class BasketItem {
     //@Column(name = "bi_sequence")
     private int basketItemSequence;
     private int basketItemQuantity;
+    private int basketItemPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
