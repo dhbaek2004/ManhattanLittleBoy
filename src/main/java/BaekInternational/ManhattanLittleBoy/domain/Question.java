@@ -26,10 +26,4 @@ public class Question {
     @OneToMany(mappedBy = "question")
     private List<QuestionComment> questionComments = new ArrayList<>();
 
-//    public static Question createQuestion(Item item, String questionTitle) {
-//        Question question = new Question();
-//        question.setQuestionTitle(questionTitle);
-//        return question;
-//    }
-
 }
