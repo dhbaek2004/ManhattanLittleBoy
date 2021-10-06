@@ -19,7 +19,11 @@ public class QuestionService {
         return question.getQuestionSequence();
     }
 
-    public List<Question> findQuestions() {
+    public List<Question> findAllQuestions() {
         return questionRepository.findAll();
+    }
+
+    public List<Question> findBySeq(int itemSequence) {
+        return questionRepository.findBySeq(itemSequence);
     }
 }

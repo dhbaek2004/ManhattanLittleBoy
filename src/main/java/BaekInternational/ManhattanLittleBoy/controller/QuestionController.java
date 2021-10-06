@@ -69,7 +69,7 @@ public class QuestionController {
     }
 
     /**
-     *
+     * 해당 상품에대한 질문 리스트
      * @param session
      * @param model
      * @return
@@ -77,9 +77,17 @@ public class QuestionController {
     @GetMapping("/list")
     public String getListQuestions(HttpSession session,
                                    Model model) {
-        List<Question> question = questionService.findQuestions();
-        model.addAttribute("question", question);
-        return "qna/test";
+        Question question = new Question();
+        // TODO 세션에서 해당 상품의 번호를 가져와야함
+        // int seq = ((Integer)(session.getAttribute("itemSequence"))).intValue(); // 상품 시퀀스넘버
+        // List<Question> questionList = questionService.findAllQuestions();
+        List<Question> questionList = questionService.findBySeq(1);
+        model.addAttribute("questionList", questionList);
+        return "qna/list";
     }
+
+    // TODO 질문 삭제기능
+
+    // TODO 질문에 대한 답변기능
 
 }
