@@ -22,13 +22,18 @@ public class Order {
     private int orderSeq;
 
     private LocalDateTime orderDate;
-    private OrderPayment orderPayment;
     private int orderPrice;
     private String orderAddress;
 
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+
+    @Enumerated(EnumType.STRING)
+    private OrderPayment orderPayment;
+
     // User 와의 Relation
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "m_seq")
+    @JoinColumn
     private Member member;
 
     // OrderItem 과의 Relation
@@ -36,7 +41,7 @@ public class Order {
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "d_seq")
+    @JoinColumn
     private Delivery delivery;
 
     // == 연관관계 메서드 == //
@@ -59,25 +64,44 @@ public class Order {
     }
 
     // == 생성 메서드 == //
-
     public static Order createOrder(Member member, Delivery delivery, List<OrderItem> orderItems) {
+        // TODO 추가할 것 많음
         Order order = new Order();
         order.setMember(member);
         order.setDelivery(delivery);
-
-        order.setOrderPrice(getOrderPrice(orderItems));
 
         return order;
     }
 
     // == 비즈니스 로직 == //
-    // itemDetail ????
-    public static int getOrderPrice(List<OrderItem> orderItems) {
+
+    /**
+     * 주문의 총 가격 구하는 메서드
+     * @param orderItems
+     * @return
+     */
+    public int getOrderPrice(List<OrderItem> orderItems) {
         int totalPrice = 0;
 
         for (OrderItem orderItem : orderItems) {
-            totalPrice += orderItem.getItem().getItemPrice();
+            for (ItemDetail itemDetail: orderItem.getItem().getItemDetail()) {
+                totalPrice += itemDetail.getPriceSum();
+            }
         }
         return totalPrice;
     }
+
+    public void cancelOrder() {
+        if (this.delivery.getDeliveryStatus() == DeliveryStatus.DELIVERY_READY) {
+            // 이미 배송중인 경우, 취소 불가
+        }
+        this.setOrderStatus(OrderStatus.CANCEL);
+        this.delivery.setDeliveryStatus(DeliveryStatus.DELIVERY_CANCEL);
+
+        // 재고 증가 로직 추가 요망
+
+
+    }
+
+
 }

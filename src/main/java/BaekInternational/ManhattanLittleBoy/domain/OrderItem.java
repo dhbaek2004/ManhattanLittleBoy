@@ -28,7 +28,6 @@ public class OrderItem {
     private Item item;
 
     // == 생성 메서드 == //
-
     /**
      * OrderItem 생성 메서드
      * @param item
@@ -39,11 +38,12 @@ public class OrderItem {
     public static OrderItem createOrderItem(Item item, int price, int quantity) {
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
-        orderItem.setOrderItemPrice(price);
+//        orderItem.setOrderItemPrice(item.getItemPrice());
         orderItem.setOrderItemQuantity(quantity);
 
         return orderItem;
     }
 
+    // == 비즈니스 로직 == //
 
 }
