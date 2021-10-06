@@ -7,9 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -17,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -80,13 +79,20 @@ public class QuestionController {
         Question question = new Question();
         // TODO 세션에서 해당 상품의 번호를 가져와야함
         // int seq = ((Integer)(session.getAttribute("itemSequence"))).intValue(); // 상품 시퀀스넘버
-        // List<Question> questionList = questionService.findAllQuestions();
-        List<Question> questionList = questionService.findBySeq(1);
+        List<Question> questionList = questionService.findAllQuestions();
+        // List<Question> questionList = questionService.findBySeq(1);
         model.addAttribute("questionList", questionList);
         return "qna/list";
     }
 
     // TODO 질문 삭제기능
+    // 해당 유저가 맞는지 확인, 세션에서 해당 질문seq 가져오기
+    @PostMapping("/delete")
+    public String delete(int id) {
+        questionService.deletePost(id);
+        return "redirect:/";
+    }
+
 
     // TODO 질문에 대한 답변기능
 
