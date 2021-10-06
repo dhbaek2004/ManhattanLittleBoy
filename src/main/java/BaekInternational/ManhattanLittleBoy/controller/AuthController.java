@@ -15,13 +15,11 @@ public class AuthController {
 
     private MemberRepository memberRepository;
 
-    public void MemberController(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
+    @GetMapping("/join")
+    public String join() {
+        return "auth/join";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login/login";
-    }
+
 
 }
