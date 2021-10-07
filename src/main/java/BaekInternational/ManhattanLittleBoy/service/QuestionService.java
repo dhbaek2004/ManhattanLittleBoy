@@ -30,11 +30,7 @@ public class QuestionService {
 //        return questionRepository.findBySeq(itemSequence);
 //    }
 
-    public void deletePost(String id) {
-        Optional<Question> question = questionRepository.findById(id);
-        if(question.isPresent()) {
-            Question question1 = question.get();
+    public void deletePost(int id) {
             questionRepository.deleteById(id);
-        }
     }
 }

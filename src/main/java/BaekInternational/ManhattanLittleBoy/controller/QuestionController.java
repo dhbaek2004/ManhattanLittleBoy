@@ -90,9 +90,9 @@ public class QuestionController {
     // 해당 유저가 맞는지 확인, 세션에서 해당 질문seq 가져오기
     @DeleteMapping("/delete")
     public String delete(HttpServletRequest request) {
-        request.getParameter("id");
+        int seq = Integer.parseInt(request.getParameter("id")) ;
         log.info(request.getParameter("id"));
-        String seq = request.getParameter("id");
+
         questionService.deletePost(seq);
         return "redirect:/";
     }
