@@ -33,9 +33,21 @@
         </table>
     </div>
 
+    <a href="/questions/delete">삭제</a>
 
 
 </div> <!-- /container -->
+
+<form name="form" id="form" role="form" method="post"
+      action="/questions/delete">
+    <input type="submit" value="포스트">
+</form>
+
+<form th:action="@{/questions/delete}" th:method="delete">
+    <input type="hidden" name="id" id="id" value="1">
+    <button type="submit">삭제</button>
+</form>
+
 
 </body>
 </html>

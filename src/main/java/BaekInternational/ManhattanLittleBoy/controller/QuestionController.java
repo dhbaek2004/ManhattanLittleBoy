@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -87,9 +88,12 @@ public class QuestionController {
 
     // TODO 질문 삭제기능
     // 해당 유저가 맞는지 확인, 세션에서 해당 질문seq 가져오기
-    @PostMapping("/delete")
-    public String delete(int id) {
-        questionService.deletePost(id);
+    @DeleteMapping("/delete")
+    public String delete(HttpServletRequest request) {
+        request.getParameter("id");
+        log.info(request.getParameter("id"));
+        String seq = request.getParameter("id");
+        questionService.deletePost(seq);
         return "redirect:/";
     }
 
