@@ -20,6 +20,6 @@ public class AuthController {
         return "auth/join";
     }
 
-
+    
 
 }
