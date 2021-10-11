@@ -45,19 +45,19 @@ public class Order {
     private Delivery delivery;
 
     // == 연관관계 메서드 == //
-    // Order - OrderItem 간의 연관관계 메서드
-    public void addOrderItem(OrderItem orderItem) {
-        this.orderItems.add(orderItem);
-        orderItem.setOrder(this);
-    }
-
-    // Order - Member 간의 연관관계 메서드
+    /**
+     * Order - Member 간의 연관관계 메서드
+     * @param member
+     */
     public void setMember(Member member) {
         this.member = member;
         member.getOrders().add(this);
     }
 
-    // Order - Delivery 간의 연관관계 메서드
+    /**
+     * Order - Delivery 간의 연관관계 메서드
+     * @param delivery
+     */
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
         delivery.setOrder(this);
@@ -74,7 +74,6 @@ public class Order {
     }
 
     // == 비즈니스 로직 == //
-
     /**
      * 주문의 총 가격 구하는 메서드
      * @param orderItems
@@ -84,24 +83,19 @@ public class Order {
         int totalPrice = 0;
 
         for (OrderItem orderItem : orderItems) {
-            for (ItemDetail itemDetail: orderItem.getItem().getItemDetail()) {
-                totalPrice += itemDetail.getPriceSum();
-            }
+            totalPrice += orderItem.getItemDetail().getPriceSum();
         }
         return totalPrice;
     }
 
+    /**
+     * 주문 취소 메서드
+     */
     public void cancelOrder() {
         if (this.delivery.getDeliveryStatus() == DeliveryStatus.DELIVERY_READY) {
             // 이미 배송중인 경우, 취소 불가
         }
         this.setOrderStatus(OrderStatus.CANCEL);
         this.delivery.setDeliveryStatus(DeliveryStatus.DELIVERY_CANCEL);
-
-        // 재고 증가 로직 추가 요망
-
-
     }
-
-
 }
