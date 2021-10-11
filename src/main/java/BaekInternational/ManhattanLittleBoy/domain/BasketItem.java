@@ -19,11 +19,29 @@ public class BasketItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    private Item item;
+    private ItemDetail itemDetail;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Basket basket;
 
+    // == 연관관계 메서드 == //
 
+    /**
+     * BasketItem - ItemDetail 간의 연관관계 메서드
+     * @param itemDetail
+     */
+    public void setItemDetail(ItemDetail itemDetail) {
+        this.itemDetail = itemDetail;
+        itemDetail.getBasketItems().add(this);
+    }
+
+    /**
+     * BasketItem - Basket 간의 연관관계 메서드
+     * @param basket
+     */
+    public void setBasket(Basket basket) {
+        this.basket = basket;
+        basket.getBasketItems().add(this);
+    }
 }

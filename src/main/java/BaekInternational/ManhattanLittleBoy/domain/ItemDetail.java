@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,6 +23,23 @@ public class ItemDetail {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private Item item;
+
+    @OneToMany(mappedBy = "itemDetail")
+    private List<OrderItem> orderItems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "itemDetail")
+    private List<BasketItem> basketItems = new ArrayList<>();
+
+    // == 연관관계 메서드 == //
+
+    /**
+     * Item - ItemDetail 간의 연관관계 메서드
+     * @param item
+     */
+    public void setItem(Item item) {
+        this.item = item;
+        item.getItemDetail().add(this);
+    }
 
     // == 비즈니스 로직 == //
     /**
