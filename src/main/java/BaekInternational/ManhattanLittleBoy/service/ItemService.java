@@ -1,7 +1,10 @@
 package BaekInternational.ManhattanLittleBoy.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-public class itemService {
+@RequiredArgsConstructor
+public class ItemService {
+    //
 }

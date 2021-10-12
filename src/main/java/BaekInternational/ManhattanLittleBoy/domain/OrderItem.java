@@ -25,24 +25,30 @@ public class OrderItem {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn
-    private Item item;
+    private ItemDetail itemDetail;
+
+    // == 연관 관계 메서드 == //
+
+    /**
+     * ItemDetail - OrderItem 간의 연관 관계 메서드
+     * @param itemDetail
+     */
+    public void setItemDetail(ItemDetail itemDetail) {
+        this.itemDetail = itemDetail;
+        itemDetail.getOrderItems().add(this);
+    }
+
+    /**
+     * OrderItem - Order 간의 연관 관계 메서드
+     * @param order
+     */
+    public void setOrder(Order order) {
+        this.order = order;
+        order.getOrderItems().add(this);
+    }
+
 
     // == 생성 메서드 == //
-    /**
-     * OrderItem 생성 메서드
-     * @param item
-     * @param price
-     * @param quantity
-     * @return
-     */
-    public static OrderItem createOrderItem(Item item, int price, int quantity) {
-        OrderItem orderItem = new OrderItem();
-        orderItem.setItem(item);
-//        orderItem.setOrderItemPrice(item.getItemPrice());
-        orderItem.setOrderItemQuantity(quantity);
-
-        return orderItem;
-    }
 
     // == 비즈니스 로직 == //
 
