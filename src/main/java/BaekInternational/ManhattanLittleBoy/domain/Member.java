@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,9 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column(name= "m_sequence")
     private Long memberSequence;
+    @NotEmpty
     private String memberId;
+    @NotEmpty
     private String memberPw;
     private String memberImage;
     private String memberName;
@@ -36,4 +39,12 @@ public class Member {
 
     @OneToOne(mappedBy = "member")
     private Basket basket;
+
+    public Member(@NotEmpty String memberId, @NotEmpty String memberPw, String memberName) {
+        this.memberId = memberId;
+        this.memberPw = memberPw;
+        this.memberName = memberName;
+        this.memberLastLogin = LocalDateTime.now();
+    }
+
 }
