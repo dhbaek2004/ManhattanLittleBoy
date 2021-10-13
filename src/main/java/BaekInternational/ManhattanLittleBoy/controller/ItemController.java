@@ -1,5 +1,6 @@
 package BaekInternational.ManhattanLittleBoy.controller;
 
+import BaekInternational.ManhattanLittleBoy.domain.Item;
 import BaekInternational.ManhattanLittleBoy.domain.ItemDetail;
 import BaekInternational.ManhattanLittleBoy.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -16,12 +17,12 @@ public class ItemController {
     private final ItemService itemService;
 
     // 메인 화면에 있는 상품 중, 상품 상세 화면을 보여주는 메서드
-    @GetMapping("/item/{itemSequence}")
+    @GetMapping("/items/{itemSequence}")
     public String 상품상세보여주기(@PathVariable int itemSequence, Model model) {
-        ItemDetail itemDetail = itemService.findItemDetail(itemSequence);
-        model.addAttribute("itemDetail", itemDetail);
-        return "items/itemDetail";
+        Item item = itemService.findItem(itemSequence);
+        model.addAttribute("item", item);
 
+        return "items/itemDetail";
     }
 
 
