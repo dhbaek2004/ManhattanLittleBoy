@@ -31,10 +31,6 @@ public class QuestionService {
 //    }
 
     public void deletePost(int id) {
-        Optional<Question> question = questionRepository.findById(id);
-        if(question.isPresent()) {
-            Question question1 = question.get();
             questionRepository.deleteById(id);
-        }
     }
 }

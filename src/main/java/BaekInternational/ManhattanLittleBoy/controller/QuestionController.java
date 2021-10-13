@@ -87,12 +87,6 @@ public class QuestionController {
 
     // TODO 질문 삭제기능
     // 해당 유저가 맞는지 확인, 세션에서 해당 질문seq 가져오기
-
-    /**
-     * 해당상품의 질문 삭제기능
-     * @param id
-     * @return
-     */
     @PostMapping("/delete")
     public String delete(int id) {
         questionService.deletePost(id);
