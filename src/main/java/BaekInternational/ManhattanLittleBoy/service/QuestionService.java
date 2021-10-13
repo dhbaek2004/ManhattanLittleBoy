@@ -22,6 +22,10 @@ public class QuestionService {
         return question.getQuestionSequence();
     }
 
+    public void createQuestion1(Question question) {
+        questionRepository.save(question);
+    }
+
     public List<Question> findAllQuestions() {
         return questionRepository.findAll();
     }
