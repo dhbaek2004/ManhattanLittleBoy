@@ -23,17 +23,17 @@ public class AuthController {
     }
 
     @PostMapping("/signIn")
-    public String signIn(String inputEmail, String inputPassword) {
-        log.info("id : {} , pw : {}", inputEmail, inputPassword);
-        MemberRepository memberRepository = this.memberRepository.findMember(inputEmail, inputPassword);
+    public String signIn(String inputId, String inputPw) {
+        log.info("id : {} , pw : {}", inputId, inputPw);
+        MemberRepository memberRepository = this.memberRepository.findMember(inputId, inputPw);
         if(memberRepository != null) {
-            return "auth/loginOK";
+            return "auth/loginOk";
         }
         return "auth/loginFail";
     }
 
 
+}
+
 
     
-
-}
