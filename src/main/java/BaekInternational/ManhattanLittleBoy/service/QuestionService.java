@@ -22,6 +22,10 @@ public class QuestionService {
         return question.getQuestionSequence();
     }
 
+    public void createQuestion1(Question question) {
+        questionRepository.save(question);
+    }
+
     public List<Question> findAllQuestions() {
         return questionRepository.findAll();
     }
@@ -31,10 +35,6 @@ public class QuestionService {
 //    }
 
     public void deletePost(int id) {
-        Optional<Question> question = questionRepository.findById(id);
-        if(question.isPresent()) {
-            Question question1 = question.get();
             questionRepository.deleteById(id);
-        }
     }
 }
