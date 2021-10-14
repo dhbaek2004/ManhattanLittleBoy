@@ -21,4 +21,11 @@ public class ItemRepository {
         em.persist(item);
     }
 
+    public int delete(Item item) {
+        int itemSequence = item.getItemSequence();
+        em.remove(item);
+
+        return itemSequence;
+    }
+
 }
