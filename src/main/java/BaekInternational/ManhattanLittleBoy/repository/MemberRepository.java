@@ -10,8 +10,8 @@ import javax.persistence.EntityManager;
 @RequiredArgsConstructor
 public class MemberRepository {
 
-    @Query("select m from Member m where email = :email and password = :password")
-    public MemberRepository findMember(String email, String password) {
+    @Query("select m from Member m where memberId = :memberId and memberPw = :memberPw")
+    public Member findMember(String memberId, String memberPw) {
         return null;
     }
 
