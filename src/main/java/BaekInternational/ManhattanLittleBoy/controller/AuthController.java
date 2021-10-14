@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/auth")
 public class AuthController {
 
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     @GetMapping("/login")
     public String join() {
@@ -25,13 +25,12 @@ public class AuthController {
     @PostMapping("/signIn")
     public String signIn(String inputId, String inputPw) {
         log.info("id : {} , pw : {}", inputId, inputPw);
-        MemberRepository memberRepository = this.memberRepository.findMember(inputId, inputPw);
-        if(memberRepository != null) {
+        Member member = this.memberRepository.findMember(inputId, inputPw);
+        if(member != null) {
             return "auth/loginOk";
         }
         return "auth/loginFail";
     }
-
 
 }
 
