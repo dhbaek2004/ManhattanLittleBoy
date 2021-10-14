@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
 public class Question {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int questionSequence;

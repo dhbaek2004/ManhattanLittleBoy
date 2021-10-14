@@ -17,12 +17,12 @@ import java.util.Optional;
 public class QuestionService {
     private final QuestionRepository questionRepository;
 
-    public int createQuestion(Question question) {
-        questionRepository.save(question);
-        return question.getQuestionSequence();
-    }
+//    public int createQuestion(Question question) {
+//        questionRepository.save(question);
+//        return question.getQuestionSequence();
+//    }
 
-    public void createQuestion1(Question question) {
+    public void createQuestion(Question question) {
         questionRepository.save(question);
     }
 

@@ -47,25 +47,26 @@ public class QuestionController {
      * @param form
      * @return
      */
-    @PostMapping("/post")
-    public ModelAndView postQuetions(QuestionForm form, HttpSession session) {
-        // TODO 세션가져오기(아이템 고유번호, 회원고유번호)
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        log.info("form 에서 넘어온 값 : " + form.getTitle());
-        Question question = new Question();
-        ModelAndView mv = new ModelAndView("qna/testView");
-
-        // DB로 넘기기 작업
-        question.setQuestionTitle(form.getTitle()); // 질문의 제목
-        question.setQuestionContent(form.getContent()); // 질문의 내용
-        question.setQuestionRegisterTime(currentDateTime); // 질문의 등록시간
-        // question.setMemberSequence(session.getAttribute("memberSequence")); // 회원고유번호
-        // question.setItem(session.getAttribute("itemSequence")); // 아이템 고유번호
-        questionService.createQuestion(question); // 서비스로 보내보리기
-
-        return mv; // 해당 상품의 상세화면을 보여주는 Form 있어야할듯
-
-    }
+//    @PostMapping("/post")
+//    public ModelAndView postQuetions(QuestionForm form, HttpSession session) {
+//        // TODO 세션가져오기(아이템 고유번호, 회원고유번호)
+//        LocalDateTime currentDateTime = LocalDateTime.now();
+//        log.info("form 에서 넘어온 값 : " + form.getTitle());
+//        Question question = new Question();
+//        ModelAndView mv = new ModelAndView("qna/testView");
+//
+//        // DB로 넘기기 작업
+//        question.setQuestionTitle(form.getTitle()); // 질문의 제목
+//        question.setQuestionContent(form.getContent()); // 질문의 내용
+//        question.setQuestionRegisterTime(currentDateTime); // 질문의 등록시간
+//
+//        // question.setMemberSequence(session.getAttribute("memberSequence")); // 회원고유번호
+//        // question.setItem(session.getAttribute("itemSequence")); // 아이템 고유번호
+//        questionService.createQuestion(question); // 서비스로 보내보리기
+//
+//        return mv; // 해당 상품의 상세화면을 보여주는 Form 있어야할듯
+//
+//    }
 
     /**
      * 해당 상품에대한 질문 리스트
@@ -74,17 +75,17 @@ public class QuestionController {
      * @param model
      * @return
      */
-    @GetMapping("/list")
-    public String getListQuestions(HttpSession session,
-                                   Model model) {
-        Question question = new Question();
-        // TODO 세션에서 해당 상품의 번호를 가져와야함
-        // int itemSequence = ((Integer)(session.getAttribute("itemSequence"))).intValue(); // 상품 시퀀스넘버
-        List<Question> questionList = questionService.findAllQuestions();
-        // List<Question> questionList = questionService.findBySeq(1);
-        model.addAttribute("questionList", questionList);
-        return "qna/list";
-    }
+//    @GetMapping("/list")
+//    public String getListQuestions(HttpSession session,
+//                                   Model model) {
+//        Question question = new Question();
+//        // TODO 세션에서 해당 상품의 번호를 가져와야함
+//        // int itemSequence = ((Integer)(session.getAttribute("itemSequence"))).intValue(); // 상품 시퀀스넘버
+//        List<Question> questionList = questionService.findAllQuestions();
+//        // List<Question> questionList = questionService.findBySeq(1);
+//        model.addAttribute("questionList", questionList);
+//        return "qna/list";
+//    }
 
     // TODO 질문 삭제기능
     // 해당 유저가 맞는지 확인, 세션에서 해당 질문seq 가져오기
