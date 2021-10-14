@@ -1,6 +1,7 @@
 package BaekInternational.ManhattanLittleBoy.service;
 
 import BaekInternational.ManhattanLittleBoy.controller.ItemForm;
+import BaekInternational.ManhattanLittleBoy.controller.ItemUpdateForm;
 import BaekInternational.ManhattanLittleBoy.domain.Item;
 import BaekInternational.ManhattanLittleBoy.domain.ItemDetail;
 import BaekInternational.ManhattanLittleBoy.repository.ItemRepository;
@@ -22,5 +23,17 @@ public class ItemService {
         itemRepository.save(item);
 
         return item.getItemSequence();
+    }
+
+    public int deleteItem(Item item) {
+        int itemSequence = itemRepository.delete(item);
+
+        return itemSequence;
+    }
+
+    public Item updateItem(Item item, ItemUpdateForm itemUpdateForm) {
+        item.setItemName(itemUpdateForm.getNewItemName());
+
+        return item;
     }
 }
