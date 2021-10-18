@@ -42,6 +42,10 @@ public class QuestionRepository {
 //                .getResultList();
 //    }
 
+    /**
+     * 해당 질문을 삭제하기
+     * @param seq
+     */
     public void deleteById(int seq) {
         log.info("리포지트리 deleteById 작동");
         log.info(String.valueOf(seq));

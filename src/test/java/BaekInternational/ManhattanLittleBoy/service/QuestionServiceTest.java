@@ -62,14 +62,21 @@ class QuestionServiceTest {
     }
 
     @Test
-    void 모든질문출력() {
-//        List<Question> questionList = questionService.findAllQuestions();
-//        for(int i=0; i<questionList.size(); i++) {
-//            System.out.println(questionList.get(i));
-//        }
+    void 해당질문출력() {
+        // given
+        Question question = Question.builder().questionSequence(1).build(); // 1번 이라 가정
+
+        // when
+
+        
+        // then
+        // 해당 질문시퀀스의 Title, Contents 출력
     }
 
     @Test
-    void 질문삭제() {
+    void 해당질문삭제() {
+        // given Seq 받아오기
+        // when
+        // then
     }
 }
