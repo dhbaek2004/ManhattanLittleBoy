@@ -25,6 +25,13 @@ public class ItemService {
         return item.getItemSequence();
     }
 
+    public void validDuplicateName(Item item) {
+        Item findItem = itemRepository.findOne(item.getItemSequence());
+        if (findItem == null) {
+            throw new IllegalStateException("이미 존재하는 아이템입니다");
+        }
+    }
+
     public int deleteItem(Item item) {
         int itemSequence = itemRepository.delete(item);
 
