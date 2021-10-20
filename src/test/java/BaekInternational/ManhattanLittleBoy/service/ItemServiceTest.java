@@ -7,11 +7,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
@@ -34,6 +37,22 @@ class ItemServiceTest {
 
         // then
         assertEquals(savedItemSequence, item.getItemSequence());
+    }
+
+    @Test
+    void validDuplicateName() throws IllegalStateException {
+        // given
+        Item item1 = new Item();
+        item1.setItemName("말잘듣는 매니저");
+        int itemId = itemService.saveItem(item1);
+
+        Item item2 = new Item();
+        item2.setItemName("말잘듣는 매니저");
+
+        // then
+        assertThrows(IllegalStateException.class, () -> {
+            itemService.validDuplicateName(item2);
+        });
     }
 
     @Test
@@ -82,5 +101,22 @@ class ItemServiceTest {
         // then
         System.out.println("item2 name: " + newItem.getItemName());
         assertEquals(item.getItemName(), itemService.findItem(id1).getItemName());
+    }
+
+
+    @Test
+    void findItems() {
+        // given
+        Item item1 = new Item();
+        Item item2 = new Item();
+
+        em.persist(item1);
+        em.persist(item2);
+
+        // when
+        List<Item> items = itemService.findItems();
+
+        // then
+        assertEquals(2, items.size());
     }
 }
