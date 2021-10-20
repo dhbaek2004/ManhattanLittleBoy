@@ -8,6 +8,9 @@ import BaekInternational.ManhattanLittleBoy.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ItemService {
@@ -19,6 +22,11 @@ public class ItemService {
         return item;
     }
 
+    public List<Item> findItems() {
+        List<Item> items = itemRepository.findAll();
+        return items;
+    }
+
     public int saveItem(Item item) {
         itemRepository.save(item);
 
@@ -26,8 +34,8 @@ public class ItemService {
     }
 
     public void validDuplicateName(Item item) {
-        Item findItem = itemRepository.findOne(item.getItemSequence());
-        if (findItem == null) {
+        Item findItem = itemRepository.findOneByName(item.getItemName());
+        if (findItem != null) {
             throw new IllegalStateException("이미 존재하는 아이템입니다");
         }
     }
