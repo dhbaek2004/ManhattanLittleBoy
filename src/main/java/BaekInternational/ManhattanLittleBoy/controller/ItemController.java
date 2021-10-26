@@ -25,7 +25,6 @@ public class ItemController {
         return "items/itemDetail";
     }
 
-
     // 아이템 등록 화면 이동 메서드
     @GetMapping("/item/new")
     public String 아이템등록화면이동 (Model model) {
@@ -33,9 +32,16 @@ public class ItemController {
     }
 
     // 아이템 등록 메서드, POST
-//    @PostMapping("/items/new")
+    // @PostMapping("/items/new")
 
-    // 아이템 정보 수정
+    // 장바구니 화면으로 이동하는 메서드, GET
+//    @GetMapping("/basket")
+//    public String 장바구니버튼클릭 (Model model) {
+//        return "";
+//    }
+//
+//    @GetMapping("/")
+
 
 
 }
