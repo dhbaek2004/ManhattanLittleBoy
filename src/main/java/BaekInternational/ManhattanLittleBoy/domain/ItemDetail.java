@@ -1,5 +1,6 @@
 package BaekInternational.ManhattanLittleBoy.domain;
 
+import BaekInternational.ManhattanLittleBoy.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -57,6 +58,7 @@ public class ItemDetail {
     public void removeStock(int quantity) {
         if (this.itemDetailOptionQuantity < quantity) {
             // 예외 처리
+            throw new NotEnoughStockException("재고가 부족합니다");
         }
         else {
             this.itemDetailOptionQuantity -= quantity;

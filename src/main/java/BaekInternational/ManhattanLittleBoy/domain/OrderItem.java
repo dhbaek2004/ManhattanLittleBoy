@@ -47,7 +47,6 @@ public class OrderItem {
         order.getOrderItems().add(this);
     }
 
-
     // == 생성 메서드 == //
 
     // == 비즈니스 로직 == //
