@@ -31,9 +31,17 @@ public class Item {
 
     // == 연관관계 메서드 == //
 
-    // 생성 메서드
+    //  == 생성 메서드 == //
+    public static Item createItem(String itemName, int itemPrice, String itemContents, List<ItemDetail> itemDetails) {
+        Item item = new Item();
+        item.setItemName(itemName);
+        item.setItemPrice(itemPrice);
+        item.setItemContents(itemContents);
+        item.setItemDetail(itemDetails);
 
+        return item;
+    }
 
-    // 비즈니스 로직
+    // == 비즈니스 로직 == //
 
 }
