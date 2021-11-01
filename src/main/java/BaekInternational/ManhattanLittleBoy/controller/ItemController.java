@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
@@ -28,19 +31,35 @@ public class ItemController {
     // 아이템 등록 화면 이동 메서드
     @GetMapping("/item/new")
     public String 아이템등록화면이동 (Model model) {
+
         return "";
     }
 
     // 아이템 등록 메서드, POST
-    // @PostMapping("/items/new")
+     @PostMapping("/items/new")
+     public String 아이템저장(Model model, ItemForm itemForm) {
 
-    // 장바구니 화면으로 이동하는 메서드, GET
-//    @GetMapping("/basket")
-//    public String 장바구니버튼클릭 (Model model) {
-//        return "";
-//    }
-//
-//    @GetMapping("/")
+        return "아이템등록화면";
+     }
+
+     // 아이템 수정 화면 이동 메서드, GET
+    @GetMapping("item/update")
+    public String 아이템수정화면이동(Model model) {
+        return "아이템수정화면";
+    }
+
+    // 아이템 수정 저장 메서드, POST
+    @PostMapping("item/update")
+    public String 아이템수정사항저장(Model model, ItemForm itemForm) {
+        return "아이템목록";
+    }
+
+    // 아이템 삭제 메서드
+    @GetMapping("item/remove")
+    public String 아이템삭제(Model model) {
+        return "아이템삭제";
+    }
+
 
 
 
