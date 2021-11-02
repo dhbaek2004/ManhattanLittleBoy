@@ -23,4 +23,9 @@ public class Basket {
 
     @OneToMany(mappedBy = "basket", cascade = CascadeType.MERGE)
     private List<BasketItem> basketItems = new ArrayList<>();
+
+    // BasketItem 추가 메서드
+    public void addBasketItem(BasketItem basketItem) {
+        this.basketItems.add(basketItem);
+    }
 }
