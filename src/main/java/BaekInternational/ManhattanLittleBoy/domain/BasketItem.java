@@ -44,4 +44,12 @@ public class BasketItem {
         this.basket = basket;
         basket.getBasketItems().add(this);
     }
+
+    // == 생성 메서드 == //
+    public static BasketItem createBasketItem(int basketItemQuantity,
+                                              int basketItemPrice,
+                                              ItemDetail itemDetail,
+                                              Basket basket) {
+
+    }
 }
